@@ -796,218 +796,218 @@ public class FormNhapHang {
 		}
 	}
     private void loadDataCmbLoai() {
-        cbLoaiSanPham.removeAllItems();
-        
-        ArrayList<LoaiSanPhamDTO> dsl = LSPBLL.LayDSLoaiSanPham();
-        for (LoaiSanPhamDTO loai : dsl) {
-        	cbLoaiSanPham.addItem(loai.getLoaiSanPham_ID() + " - " + loai.getLoaiSanPham_Name());
+/*s1*/        cbLoaiSanPham.removeAllItems();
+
+/*s1*/        ArrayList<LoaiSanPhamDTO> dsl = LSPBLL.LayDSLoaiSanPham();
+/*c1*/        for (LoaiSanPhamDTO loai : dsl) {
+/*s2*/        	cbLoaiSanPham.addItem(loai.getLoaiSanPham_ID() + " - " + loai.getLoaiSanPham_Name());
         }
     }
 	private void LoadDSSanPham(){
-		DefaultTableModel dtm = new DefaultTableModel() {
+/*s1*/		DefaultTableModel dtm = new DefaultTableModel() {
 	    @Override
-	    public boolean isCellEditable(int row, int column) {
-	        return false;
+/*s1*/	    public boolean isCellEditable(int row, int column) {
+/*s1*/	        return false;
 	    }};
-		tableSanPham.setModel(dtm);
-		dtm.addColumn("Mã SP");
-		dtm.addColumn("Tên Sản Phẩm");
-		dtm.addColumn("Giá");
-		dtm.addColumn("SL Tồn Kho");
-		tableSanPham.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tableSanPham.getColumnModel().getColumn(0).setPreferredWidth(60);
-		tableSanPham.getColumnModel().getColumn(1).setPreferredWidth(390);
-		tableSanPham.getColumnModel().getColumn(2).setPreferredWidth(80);
-		tableSanPham.getColumnModel().getColumn(3).setPreferredWidth(80);
-		String LoaiSanPham = cbLoaiSanPham.getSelectedItem().toString();
-		int int0 = LoaiSanPham.charAt(0);
-		int MaLoaiSanPham = int0 - '0';
-		Vector<SanPhamDTO> arr = SPBLL.LayDSSanPhamTheoLoai(MaLoaiSanPham);
-		for(int i = 0;i<arr.size();i++){
-			SanPhamDTO SP = arr.get(i);
-			String id = SP.getSanPham_ID();
-			String name = SP.getSanPham_Name();
-			int price = SP.getSanPham_Price();
-			int amount = SP.getSanPham_Amount();
-			Object[] row = {id,name,price,amount};
-			dtm.addRow(row);
+/*s1*/		tableSanPham.setModel(dtm);
+/*s1*/		dtm.addColumn("Mã SP");
+/*s1*/		dtm.addColumn("Tên Sản Phẩm");
+/*s1*/		dtm.addColumn("Giá");
+/*s1*/		dtm.addColumn("SL Tồn Kho");
+/*s1*/		tableSanPham.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+/*s1*/		tableSanPham.getColumnModel().getColumn(0).setPreferredWidth(60);
+/*s1*/		tableSanPham.getColumnModel().getColumn(1).setPreferredWidth(390);
+/*s1*/		tableSanPham.getColumnModel().getColumn(2).setPreferredWidth(80);
+/*s1*/		tableSanPham.getColumnModel().getColumn(3).setPreferredWidth(80);
+/*s1*/		String LoaiSanPham = cbLoaiSanPham.getSelectedItem().toString();
+/*s1*/		int int0 = LoaiSanPham.charAt(0);
+/*s1*/		int MaLoaiSanPham = int0 - '0';
+/*s1*/		Vector<SanPhamDTO> arr = SPBLL.LayDSSanPhamTheoLoai(MaLoaiSanPham);
+/*c1*/		for(int i = 0;i<arr.size();i++){
+/*s2*/			SanPhamDTO SP = arr.get(i);
+/*s2*/			String id = SP.getSanPham_ID();
+/*s2*/			String name = SP.getSanPham_Name();
+/*s2*/			int price = SP.getSanPham_Price();
+/*s2*/			int amount = SP.getSanPham_Amount();
+/*s2*/			Object[] row = {id,name,price,amount};
+/*s2*/			dtm.addRow(row);
 		}
 	}
 	private void BindingSanPham(){
-		try {
-			int row = tableSanPham.getSelectedRow();
-			txtfMaSanPham.setText(tableSanPham.getModel().getValueAt(row, 0).toString());
-			txtfTenSanPham.setText(tableSanPham.getModel().getValueAt(row, 1).toString());
+/*c1*/		try {
+/*s1*/			int row = tableSanPham.getSelectedRow();
+/*s1*/			txtfMaSanPham.setText(tableSanPham.getModel().getValueAt(row, 0).toString());
+/*s1*/			txtfTenSanPham.setText(tableSanPham.getModel().getValueAt(row, 1).toString());
 		} catch(Exception e) {
-			System.out.println(e);
+/*s2*/			System.out.println(e);
 		}
 	}
 	private void LoadChiTietPhieuNhap() {
-		dtmPN = new DefaultTableModel() {
+/*s1*/		dtmPN = new DefaultTableModel() {
 		@Override
-		public boolean isCellEditable(int row, int column) {
-		    return false;
+/*s1*/		public boolean isCellEditable(int row, int column) {
+/*s1*/		    return false;
 		}};
-		tablePhieuNhap.setModel(dtmPN);
-		dtmPN.addColumn("Mã SP");
-		dtmPN.addColumn("Tên Sản Phẩm");
-		dtmPN.addColumn("Giá");
-		dtmPN.addColumn("SL Nhập");
-		dtmPN.addColumn("Thành Tiền");
-		tablePhieuNhap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		tablePhieuNhap.getColumnModel().getColumn(0).setPreferredWidth(60);
-		tablePhieuNhap.getColumnModel().getColumn(1).setPreferredWidth(390);
-		tablePhieuNhap.getColumnModel().getColumn(2).setPreferredWidth(52);
-		tablePhieuNhap.getColumnModel().getColumn(3).setPreferredWidth(52);
-		tablePhieuNhap.getColumnModel().getColumn(4).setPreferredWidth(54);
+/*s1*/		tablePhieuNhap.setModel(dtmPN);
+/*s1*/		dtmPN.addColumn("Mã SP");
+/*s1*/		dtmPN.addColumn("Tên Sản Phẩm");
+/*s1*/		dtmPN.addColumn("Giá");
+/*s1*/		dtmPN.addColumn("SL Nhập");
+/*s1*/		dtmPN.addColumn("Thành Tiền");
+/*s1*/		tablePhieuNhap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+/*s1*/		tablePhieuNhap.getColumnModel().getColumn(0).setPreferredWidth(60);
+/*s1*/		tablePhieuNhap.getColumnModel().getColumn(1).setPreferredWidth(390);
+/*s1*/		tablePhieuNhap.getColumnModel().getColumn(2).setPreferredWidth(52);
+/*s1*/		tablePhieuNhap.getColumnModel().getColumn(3).setPreferredWidth(52);
+/*s1*/		tablePhieuNhap.getColumnModel().getColumn(4).setPreferredWidth(54);
 	}
 	private void AddPhieuNhap() {
-		try {
-		if (txtfMaNCC.getText().trim().equals("")) 
+/*c1*/		try {
+/*c2*/		if (txtfMaNCC.getText().trim().equals("")) 
 		{
-			JOptionPane.showMessageDialog(null,"Vui lòng kiểm tra số điện thoại nhà cung cấp");
+/*s1*/			JOptionPane.showMessageDialog(null,"Vui lòng kiểm tra số điện thoại nhà cung cấp");
 		} else {
-			btnThemPN.setEnabled(false);
-			btnXoaPN.setEnabled(true);
-			btnTimKiemNCC.setEnabled(false);
-			btnThem.setEnabled(true);
-			btnXoa.setEnabled(true);
-			btnThanhToan.setEnabled(true);
-			PNDTO.setPhieuNhap_IDNCC(Integer.parseInt(txtfMaNCC.getText()));
-			PNDTO.setPhieuNhap_IDNV(Integer.parseInt(txtfMaNhanVien.getText()));
-			PNDTO.setPhieuNhap_Date(Date.valueOf(LocalDate.now()));
-			JOptionPane.showMessageDialog(null,PNBLL.addPhieuNhap(PNDTO));
+/*s2*/			btnThemPN.setEnabled(false);
+/*s2*/			btnXoaPN.setEnabled(true);
+/*s2*/			btnTimKiemNCC.setEnabled(false);
+/*s2*/			btnThem.setEnabled(true);
+/*s2*/			btnXoa.setEnabled(true);
+/*s2*/			btnThanhToan.setEnabled(true);
+/*s2*/			PNDTO.setPhieuNhap_IDNCC(Integer.parseInt(txtfMaNCC.getText()));
+/*s2*/			PNDTO.setPhieuNhap_IDNV(Integer.parseInt(txtfMaNhanVien.getText()));
+/*s2*/			PNDTO.setPhieuNhap_Date(Date.valueOf(LocalDate.now()));
+/*s2*/			JOptionPane.showMessageDialog(null,PNBLL.addPhieuNhap(PNDTO));
 		}
 		} catch (Exception e) {
-			System.out.println(e);
+/*s3*/			System.out.println(e);
 		}
 	}
 	private void DeletePhieuNhap() {
-		try{
-			JOptionPane.showMessageDialog(null,PNBLL.deletePhieuNhap());
-			btnThemPN.setEnabled(true);
-			btnXoaPN.setEnabled(false);
-			btnTimKiemNCC.setEnabled(true);
-			btnThem.setEnabled(false);
-			btnXoa.setEnabled(false);
-			btnThanhToan.setEnabled(false);
+/*c1*/		try{
+/*s1*/			JOptionPane.showMessageDialog(null,PNBLL.deletePhieuNhap());
+/*s1*/			btnThemPN.setEnabled(true);
+/*s1*/			btnXoaPN.setEnabled(false);
+/*s1*/			btnTimKiemNCC.setEnabled(true);
+/*s1*/			btnThem.setEnabled(false);
+/*s1*/			btnXoa.setEnabled(false);
+/*s1*/			btnThanhToan.setEnabled(false);
 		}catch(Exception e){
-			System.out.println(e);
+/*s2*/			System.out.println(e);
 		}
 	}
 	private void KiemTraNhaCungCap() {
-		try {
-			txtfMaNCC.setText("");
-			txtfTenNCC.setText("");
-			if (txtfSDT.getText().length()>10 || txtfSDT.getText().length()<10){
-				JOptionPane.showMessageDialog(null,"Vui lòng nhập đúng số điện thoại");
+/*c1*/		try {
+/*s1*/			txtfMaNCC.setText("");
+/*s1*/			txtfTenNCC.setText("");
+/*c2*/			if (txtfSDT.getText().length()>10 || txtfSDT.getText().length()<10){
+/*s2*/				JOptionPane.showMessageDialog(null,"Vui lòng nhập đúng số điện thoại");
 			} else if (NCCBLL.hasNhaCungCap_PhoneNumber(Integer.parseInt(txtfSDT.getText())).equals(false)) {
-				JOptionPane.showMessageDialog(null,"Nhà cung cấp không tồn tại");
+/*s3*/				JOptionPane.showMessageDialog(null,"Nhà cung cấp không tồn tại");
 			} else {
-				JOptionPane.showMessageDialog(null,"Nhà cung cấp có tồn tại");
-				Vector<NhaCungCapDTO> arr = NCCBLL.LayDSNhaCungCapTheoSDT(Integer.parseInt(txtfSDT.getText()));
-				for(int i = 0;i<arr.size();i++) {
-					NCCDTO = arr.get(i);
-					txtfMaNCC.setText(String.valueOf(NCCDTO.getNhaCungCap_ID()));
-					txtfTenNCC.setText(NCCDTO.getNhaCungCap_Name());
+/*s4*/				JOptionPane.showMessageDialog(null,"Nhà cung cấp có tồn tại");
+/*s4*/				Vector<NhaCungCapDTO> arr = NCCBLL.LayDSNhaCungCapTheoSDT(Integer.parseInt(txtfSDT.getText()));
+/*c3*/				for(int i = 0;i<arr.size();i++) {
+/*s5*/					NCCDTO = arr.get(i);
+/*s5*/					txtfMaNCC.setText(String.valueOf(NCCDTO.getNhaCungCap_ID()));
+/*s5*/					txtfTenNCC.setText(NCCDTO.getNhaCungCap_Name());
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+/*s6*/			System.out.println(e);
 		}
 	}
 	private void AddVaoChiTietPhieuNhap() {
-		try {
-		if (txtfMaSanPham.getText().trim().equals("") ||
-			txtfTenSanPham.getText().trim().equals("") ||
-			spinnerSoLuong.getValue().equals(0) ||
-			spinnerSoLuong.getValue().equals("") ) {
-			JOptionPane.showMessageDialog(null,"Vui lòng chọn sản phẩm và nhập số lượng");
+/*c1*/		try {
+/*c2*/		if (txtfMaSanPham.getText().trim().equals("") ||
+/*s1*/			txtfTenSanPham.getText().trim().equals("") ||
+/*s1*/			spinnerSoLuong.getValue().equals(0) ||
+/*s1*/			spinnerSoLuong.getValue().equals("") ) {
+/*s1*/			JOptionPane.showMessageDialog(null,"Vui lòng chọn sản phẩm và nhập số lượng");
 		} else {
-			int row = tableSanPham.getSelectedRow();
-			int SLNhap = (Integer.parseInt(spinnerSoLuong.getValue().toString()));
-			int TonKho = (Integer.parseInt(tableSanPham.getModel().getValueAt(row, 3).toString()));
-			String id = txtfMaSanPham.getText();
-			String name = txtfTenSanPham.getText();
-			int price = (Integer.parseInt(tableSanPham.getModel().getValueAt(row, 2).toString()));
-			price = (price*95)/100;
-			int total = (SLNhap * price);
-			Object[] dtmrow = {id,name,price,SLNhap,total};
-			dtmPN.addRow(dtmrow);
-			btnThanhToan.setEnabled(true);
+/*s2*/			int row = tableSanPham.getSelectedRow();
+/*s2*/			int SLNhap = (Integer.parseInt(spinnerSoLuong.getValue().toString()));
+/*s2*/			int TonKho = (Integer.parseInt(tableSanPham.getModel().getValueAt(row, 3).toString()));
+/*s2*/			String id = txtfMaSanPham.getText();
+/*s2*/			String name = txtfTenSanPham.getText();
+/*s2*/			int price = (Integer.parseInt(tableSanPham.getModel().getValueAt(row, 2).toString()));
+/*s2*/			price = (price*95)/100;
+/*s2*/			int total = (SLNhap * price);
+/*s2*/			Object[] dtmrow = {id,name,price,SLNhap,total};
+/*s2*/			dtmPN.addRow(dtmrow);
+/*s2*/			btnThanhToan.setEnabled(true);
 			//Xử lý thêm vào CTPN trong database
-			int idPN = PNBLL.LayPhieuNhapMoiNhat();
-			CTPhieuNhapDTO CTPNDTO = new CTPhieuNhapDTO();
-			CTPNDTO.setCTPhieuNhap_ID(idPN);
-			CTPNDTO.setCTPhieuNhap_IDSP(id);
-			CTPNDTO.setCTPhieuNhap_Amount(SLNhap);
-			CTPNDTO.setCTPhieuNhap_Price(price);
-			CTPNDTO.setCTPhieuNhap_Total(total);
-			if(CTPNBLL.kiemtraCTPN(CTPNDTO)) //Kiểm tra trùng sản phẩm trong CTPN
-				CTPNBLL.addCTPN(CTPNDTO);
+/*s2*/			int idPN = PNBLL.LayPhieuNhapMoiNhat();
+/*s2*/			CTPhieuNhapDTO CTPNDTO = new CTPhieuNhapDTO();
+/*s2*/			CTPNDTO.setCTPhieuNhap_ID(idPN);
+/*s2*/			CTPNDTO.setCTPhieuNhap_IDSP(id);
+/*s2*/			CTPNDTO.setCTPhieuNhap_Amount(SLNhap);
+/*s2*/			CTPNDTO.setCTPhieuNhap_Price(price);
+/*s2*/			CTPNDTO.setCTPhieuNhap_Total(total);
+/*c3*/			if(CTPNBLL.kiemtraCTPN(CTPNDTO)) //Kiểm tra trùng sản phẩm trong CTPN
+/*s3*/				CTPNBLL.addCTPN(CTPNDTO);
 			//Xử lý cập nhật tồn kho sản phẩm trong database
-			int TonKhoMoi = TonKho + SLNhap;
-			SPBLL.UpdateSLSanPham(id,TonKhoMoi);
+/*s4*/			int TonKhoMoi = TonKho + SLNhap;
+/*s4*/			SPBLL.UpdateSLSanPham(id,TonKhoMoi);
 			//Xử lý cập nhật lại tổng tiền
-			TongTien =(TongTien + (CTPNDTO.getCTPhieuNhap_Total()));
+/*s4*/			TongTien =(TongTien + (CTPNDTO.getCTPhieuNhap_Total()));
 		} } catch (Exception e) {
-			System.out.println(e);
+/*s5*/			System.out.println(e);
 		}
 	}
 	private void DeleteChiTietPhieuNhap () {
-		try {
-			int row = tablePhieuNhap.getSelectedRow();
-			int idPN = PNBLL.LayPhieuNhapMoiNhat();
-			String idsp = (tablePhieuNhap.getModel().getValueAt(row, 0).toString());
-			int ThanhTien = (Integer.parseInt(tablePhieuNhap.getModel().getValueAt(row, 4).toString()));
-			int SLNhap = (Integer.parseInt(tablePhieuNhap.getModel().getValueAt(row, 3).toString()));
-			int TonKho = SPBLL.LaySLSPTheoMaSP(idsp);
-			int TonKhoMoi = (TonKho - SLNhap);
-			TongTien = (TongTien - ThanhTien);
+/*c1*/		try {
+/*s1*/			int row = tablePhieuNhap.getSelectedRow();
+/*s1*/			int idPN = PNBLL.LayPhieuNhapMoiNhat();
+/*s1*/			String idsp = (tablePhieuNhap.getModel().getValueAt(row, 0).toString());
+/*s1*/			int ThanhTien = (Integer.parseInt(tablePhieuNhap.getModel().getValueAt(row, 4).toString()));
+/*s1*/			int SLNhap = (Integer.parseInt(tablePhieuNhap.getModel().getValueAt(row, 3).toString()));
+/*s1*/			int TonKho = SPBLL.LaySLSPTheoMaSP(idsp);
+/*s1*/			int TonKhoMoi = (TonKho - SLNhap);
+/*s1*/			TongTien = (TongTien - ThanhTien);
 			//Cập nhật dữ liệu trong database khi xoá chi tiết hoá đơn
-			SPBLL.UpdateSLSanPham(idsp,TonKhoMoi);
-			JOptionPane.showMessageDialog(null,CTPNBLL.deleteCTPN(idPN, idsp));
-			((DefaultTableModel)tablePhieuNhap.getModel()).removeRow(row);
-			LoadDSSanPham();
+/*s1*/			SPBLL.UpdateSLSanPham(idsp,TonKhoMoi);
+/*s1*/			JOptionPane.showMessageDialog(null,CTPNBLL.deleteCTPN(idPN, idsp));
+/*s1*/			((DefaultTableModel)tablePhieuNhap.getModel()).removeRow(row);
+/*s1*/			LoadDSSanPham();
 		} catch (Exception e) {
-			System.out.println(e);
+/*s2*/			System.out.println(e);
 		}
 	}
 	private void ThanhToanPhieuNhap() {
-		try{
-			JOptionPane.showMessageDialog(null,PNBLL.ThanhToan(TongTien));
-			btnThemPN.setEnabled(true);
-			btnXoaPN.setEnabled(false);
-			btnTimKiemNCC.setEnabled(true);
-			btnThem.setEnabled(false);
-			btnXoa.setEnabled(false);
-			btnThanhToan.setEnabled(false);
-			txtfMaNCC.setText("");
-			txtfTenNCC.setText("");
-			txtfSDT.setText("");
-			txtfTenSanPham.setText("");
-			txtfMaSanPham.setText("");
-	        ArrayList<Vector> dsGioHang = new ArrayList<>();
-	        int row = tablePhieuNhap.getRowCount();
-	        if (row == 0) return;
-	        for (int i = 0; i < row; i++) {
-	            Vector vec = new Vector();
-	            vec.add(tablePhieuNhap.getValueAt(i, 0));
-	            vec.add(tablePhieuNhap.getValueAt(i, 1));
-	            vec.add(tablePhieuNhap.getValueAt(i, 2));
-	            vec.add(tablePhieuNhap.getValueAt(i, 3));
-	            vec.add(tablePhieuNhap.getValueAt(i, 4));
-	            dsGioHang.add(vec);
+/*c1*/		try{
+/*s1*/			JOptionPane.showMessageDialog(null,PNBLL.ThanhToan(TongTien));
+/*s1*/			btnThemPN.setEnabled(true);
+/*s1*/			btnXoaPN.setEnabled(false);
+/*s1*/			btnTimKiemNCC.setEnabled(true);
+/*s1*/			btnThem.setEnabled(false);
+/*s1*/			btnXoa.setEnabled(false);
+/*s1*/			btnThanhToan.setEnabled(false);
+/*s1*/			txtfMaNCC.setText("");
+/*s1*/			txtfTenNCC.setText("");
+/*s1*/			txtfSDT.setText("");
+/*s1*/			txtfTenSanPham.setText("");
+/*s1*/			txtfMaSanPham.setText("");
+/*s1*/	        ArrayList<Vector> dsGioHang = new ArrayList<>();
+/*s1*/	        int row = tablePhieuNhap.getRowCount();
+/*c2*/	        if (row == 0) return;
+/*c3*/	        for (int i = 0; i < row; i++) {
+/*s2*/	            Vector vec = new Vector();
+/*s2*/	            vec.add(tablePhieuNhap.getValueAt(i, 0));
+/*s2*/	            vec.add(tablePhieuNhap.getValueAt(i, 1));
+/*s2*/	            vec.add(tablePhieuNhap.getValueAt(i, 2));
+/*s2*/	            vec.add(tablePhieuNhap.getValueAt(i, 3));
+/*s2*/	            vec.add(tablePhieuNhap.getValueAt(i, 4));
+/*s2*/	            dsGioHang.add(vec);
 	        }
-			DefaultTableModel model = (DefaultTableModel) tablePhieuNhap.getModel();
-			model.setRowCount(0);
-			PNDTO.setPhieuNhap_ID(PNBLL.LayPhieuNhapMoiNhat());
-			PNDTO.setPhieuNhap_Total(TongTien);
-			FormXuatPhieuNhap frm = new FormXuatPhieuNhap(PNDTO,dsGioHang,UsersLogin,NCCDTO);
-			frm.Frame.setVisible(true);
-			LoadDSSanPham();
+/*s3*/			DefaultTableModel model = (DefaultTableModel) tablePhieuNhap.getModel();
+/*s3*/			model.setRowCount(0);
+/*s3*/			PNDTO.setPhieuNhap_ID(PNBLL.LayPhieuNhapMoiNhat());
+/*s3*/			PNDTO.setPhieuNhap_Total(TongTien);
+/*s3*/			FormXuatPhieuNhap frm = new FormXuatPhieuNhap(PNDTO,dsGioHang,UsersLogin,NCCDTO);
+/*s3*/			frm.Frame.setVisible(true);
+/*s3*/			LoadDSSanPham();
 		}catch(Exception e){
-			System.out.println(e);
+/*s4*/			System.out.println(e);
 		}
 	}
 
